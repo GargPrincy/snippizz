@@ -1,0 +1,180 @@
+
+<section class="middle-part video-list">
+  <span class="loader" *ngIf="loading"></span>
+
+  <!-- {{searchWord}}Amandfddfd -->
+ 
+  <div class="container">
+    <div class="row justify-content-between">
+      <div *ngIf="topicKeyword && categoriesAllData.data.length && showData && !loading">
+        <h2 class="">{{categoriesAllData.data[0].category}}</h2></div>
+
+      
+        <div class="col-auto">
+                <h2 class="category-topic m-0">{{showKeyword}}</h2>
+        </div>
+        <div class="col">
+
+          <div class="row justify-content-end mb-3">
+            <div class="col-auto">
+          <form [formGroup]="form"  *ngIf="categoriesAllData &&  categoriesAllData.data &&  categoriesAllData.data.length && showData && !loading">
+            <div class="border-border">
+              <div class="dropdown">
+                <a    target="_self" style="cursor: pointer;" (click)="sort('sortSearch')" >Sort</a>
+                <!-- <button (click)="sort(slide.topic_id)"  >Sort</button> -->
+                <div style="display:none" class="dropdown-options" id="sortSearch">
+                  <a (click)="onChangess('viewss','sortSearch')"    [class.a-select] = "viewssSt === true "    target="_self" style="cursor: pointer;"> Sort (by views)</a>
+                  <a   (click)="onChangess('atoz','sortSearch')"  [class.a-select] = "atozSt === true "  target="_self" style="cursor: pointer;"> Sort (A-Z title)</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-auto">
+          <!-- <input class="dark-light" type="checkbox" id="dark-light" name="dark-light"/>
+            <label for="dark-light"></label>
+        
+            <div class="light-back"></div> 
+        
+          <a href="https://front.codes/" class="logo" target="_blank">
+            <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
+          </a>
+        
+            <div class="sec-center"> 	
+              <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+              <label class="for-dropdown" for="dropdown">Sort <i class="uil uil-arrow-down"></i></label>
+              <div class="section-dropdown"> 
+                <a target="_self" (click)="videoSort()">Sort(by views)<i class="uil uil-arrow-right"></i></a>
+                <a  target="_self" (click)="videoSortAlpha()">Sort(A-Z title) <i class="uil uil-arrow-right"></i></a>
+               
+              </div>
+            </div> -->
+         
+    
+            <div class="border-box" *ngIf="categoriesAllData &&  categoriesAllData.data && categoriesAllData.data.length && showData && !loading"><a 
+               target="_self" style="cursor: pointer;"  (click)="videoAll()" >View All ({{totalCount}})</a> </div>
+           <!-- 
+            <div class="border-box" *ngIf="categoriesAllData.length && showData && !loading"><a  target="_self" (click)="videoSortAlpha()">AlphaSort</a> </div>   -->
+
+
+            </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- <button id="show" data-theme="b">
+      Default loader
+    </button> -->
+    <!-- {{categoriesAllData | json}} -->
+    <div class="row">
+       <div class="col-md-12 product-video-box"  id="galleries-list">
+        
+        
+              <!-- <ng-image-slider [images]="imageObject" 
+                    [imagePopup]="false"
+                  [infinite]="false"
+                  [autoSlide]="1"
+               [imageSize]="{width: '25%', height: 230}" #nav></ng-image-slider> -->
+
+      
+          
+ 
+       <div class="col-md-12"  *ngIf="categoriesAllData &&  categoriesAllData.data &&  categoriesAllData.data.length && showData">
+        <div class="wrapper">
+    
+       <owl-carousel-o [options]="customOptions"  *ngIf="categoriesAllData.data.length > 4">
+    
+        <ng-container class="col-md-3" *ngFor="let slide of categoriesAllData.data"  >
+          <ng-template class="slide" carouselSlide [id]="slide.id">
+            <a   href=""  routerLink="/video/{{slide.id}}" class="rel_position">
+              <div class="thumbnail-box"> <img  style="object-fit:fill;" src="{{slide.video_thumbnail}}" height="250px" width="100%"  alt="product-img">
+              </div> 
+              <div class="thumbnail-title"> {{slide.title}}  <span class="thumb_title">{{slide.title}}</span></div>
+            </a> 
+            <div class="row">
+              <div class="col-6">
+                <div class="sub-title-1"> {{slide.producer}} <span class="produ_hover prod_2">{{slide.producer}}</span></div>
+              </div>
+              <div class="col-6">
+                <div class="sub-title-2">{{slide.view_count}} views </div>
+                </div>
+            </div>
+            
+           
+    
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o> 
+      <div class="row" *ngIf="categoriesAllData.data.length <= 4">
+  
+        <div class="col-md-3" *ngFor="let slide of categoriesAllData.data" style="padding-bottom: 30px;">
+        <a   href=""  routerLink="/video/{{slide.id}}" class="rel_position">
+          <div class="thumbnail-box"> <img  style="object-fit:fill;" src="{{slide.video_thumbnail}}" height="250px" width="100%" alt="product-img">
+          </div> 
+          <div class="thumbnail-title"> {{slide.title}}  <span class="thumb_title">{{slide.title}}</span></div>
+        </a> 
+        <div class="row">
+          <div class="col-6">
+            <div class="sub-title-1"> {{slide.producer}} <span class="produ_hover prod_2">{{slide.producer}}</span></div>
+          </div>
+          <div class="col-6">
+            <div class="sub-title-2">{{slide.view_count}} views </div> </div>
+            </div>
+        </div>
+
+        
+        
+       
+      </div>  
+       </div>
+   </div>
+   <!-- {{categoriesAllData.data.length | json}} -->
+
+   <div class="col-md-12"  *ngIf="categoriesAllData?.data?.length == 0 && !loading">
+    <h3 class="error-msg">No matching records found</h3>
+   </div>
+  </div>
+
+   </div>
+  </div>
+
+  
+   <!-- <mdb-carousel [controls]="true" >
+    <mdb-carousel-item>
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).webp"
+        class="d-block w-100"
+        alt="..."
+      />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).webp"
+        class="d-block w-100"
+        alt="..."
+      />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).webp"
+        class="d-block w-100"
+        alt="..."
+      />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </mdb-carousel-item>
+  </mdb-carousel> -->
+   
+  </section>
+

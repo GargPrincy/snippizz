@@ -1,0 +1,254 @@
+<section class="middle-part video-page">
+    <div class="container">
+      <div class="row">
+
+          <div class="col-lg-12">
+              <div class="min-category-page zoomInDown">
+                  <h2>{{videoData.title }}</h2>
+               </div>
+          </div>
+</div>
+          <div class="row align-items-start">
+        
+          <div class="col-xl-3 col-lg-6  order-xl-1 order-2 mb-lg-0 mb-4 h-100">
+
+              <div class="cat-box-mian bounceInLeft">
+                  <div class="cat-box-right">
+                  <div class="cat-box-block">
+                      <h3>Category:</h3>
+                      <div class="sub-block">{{videoData.category}}</div>
+                  </div>
+                      </div>
+                  <div class="cat-box-right">
+                <div class="cat-box-block">
+                      <h3>Topic:</h3>
+                      <div class="sub-block">{{videoData.topic}}</div>
+                  </div>
+                  </div>
+                  <div class="cat-box-right">
+                  <div class="cat-box-block">
+                      <h3>Producer/Presenter:</h3>
+                      <div class="sub-block">{{videoData.producer}}</div>
+                  </div>  
+                  </div>  
+                  <div class="cat-box-right">
+                  <div class="cat-box-block">
+                      <h3>Total Views:</h3>
+                      <div class="sub-block">{{videoData.view_count}}</div>
+                  </div>  <!---->
+                  </div>  <!---->
+                 
+
+          </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-12 order-1 order-xl-2 mb-xl-0 mb-4 h-100">
+            <div class="category-full-video">
+                <!-- <ng-image-slider [images]="imageObject" 
+                     [imagePopup]="true"
+                     [videoAutoPlay]="true"
+                     [infinite]="false"
+                     [autoSlide]="1"
+                     [imageSize]="{width: '100%', height: 375}" #nav>
+                </ng-image-slider>  -->
+
+                <!-- <video width="100%" height="" controls>
+                    <source src="movie.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                  </video> -->
+
+                  <div id="youtube-videos" class="youtube-videos" *ngIf="videoData.type == 'youtube'">
+                         <youtube-player    videoId="{{videoId}}"></youtube-player>
+                  </div>
+                  <div style="display: none">
+                    <input type="text" id="ytbUrl" value="{{videoData.url}}"/>
+                    <input type="text" id="embedUrl" value="{{videoEmbed}}"/>
+
+                  </div>
+                  <div id="instructions" *ngIf="videoData.type == 'media'">
+                    <video  (play)="toggleVideo(videoData.id)"  id="my_video_1" class="video-js vjs-default-skin" controls preload="none"
+                        poster='{{videoData.video_thumbnail}}'
+                        data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+                        <source src="{{videoData.url}}" type='video/mp4' />
+                        
+                    </video>
+                    <!-- <button (click)="playPause()">Play/Pause</button>
+                    <button (click)="makeBig()">Big</button>
+                    <button (click)="makeSmall()">Small</button>
+                    <button (click)="makeNormal()">Normal</button>
+                    <button (click)="restart();">Restart</button>
+                    <button (click)="skip(-10)">Rewind</button>
+                    <button (click)="skip(10)">Fastforward</button> -->
+                </div>
+                
+           </div>
+         </div> 
+
+     
+          <div class="col-xl-3 col-lg-6 order-xl-3 order-2 h-100 right-category bounceInRight">
+
+            <div class="cat-box-mian cat-right">
+             <div class="cat-box-right">   <a href="" routerLink="/video-listings/{{ videoData.topic_id }}?topic&topic_ids={{ videoData.topic_id }}">
+              <img src="assets/images/video_view_icon.png" alt="" />
+              <div class="right-btnn">
+                View Other Videos in this Topic
+              </div>
+            </a>
+            </div>  
+             <!-- {{videoData.topic}} -->
+             <!-- <div class="cat-box-right"> View other  videos in this topic</div>    -->
+            
+             <div class="cat-box-right">
+              <a href="" href=""  data-bs-toggle="modal" data-bs-target="#raund-modalsss">    
+                <img src="assets/images/copy_icon.png" alt="" />
+                <div class="right-btnn"> Copy Embed Code
+                </div>
+                </a>
+              </div>
+             <div class="cat-box-right"  >
+              <a href="" href=""  data-bs-toggle="modal" (click)="missingVideoReport(videoData.id)" data-bs-target="#raund-modals">
+              <img src="assets/images/mail_icon.png" alt="" />
+              <div class="right-btnn">
+                Report Missing Video
+              </div>
+              </a>
+            </div>  
+
+
+
+            <div class="cat-box-right"  >
+              <a href="" 
+               (click)="shareVideoCopytext(videoData.url)"   data-bs-toggle="modal" data-bs-target="#raund-modalss"> 
+              <img src="assets/images/share-btn.png" alt=""  />
+              <div class="right-btnn">
+                Share Video
+              </div>
+              </a>
+            </div>  
+
+
+
+            <!-- <div class="cat-btn text-center">
+              <a href="" href=""  data-bs-toggle="modal" data-bs-target="#raund-modalss">    
+                <img (click)="shareVideoCopytext(videoData.url)" src="assets/images/share-video-btn.png" class="share-btn" alt="share icon"></a>
+              </div> -->
+
+          
+
+             <!-- <div class="cat-box-right" (click)="makeBig()" >View Video on Full Screen</div>   -->
+
+
+        </div>
+
+        </div>
+
+     
+
+
+       
+</div>
+
+      </div>
+
+      <div class="modal raund-modal" id="raund-modals">
+        <div class="modal-dialog">
+          <div class="modal-content">
+       
+            <div class="modal-body modal-inner-box  ">
+                <div class="model-content">
+                <h3>Report Missing Video</h3>
+                <div class="ineer-popup-content">A "Report Missing Video" message has now been sent to the Snippizz team. Thank you!</div>
+                <div class="ineer-popup-close-btn">
+                          <button data-bs-dismiss="modal" class="btn btn-blue" >Okay</button>
+                          <!-- <button data-bs-dismiss="modal" class="btn btn-green" >Cancel</button> -->
+  
+                         </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+      
+      <div class="modal raund-modal" id="raund-modalss">
+        <div class="modal-dialog">
+          <div class="modal-content">
+       
+            <div class="modal-body modal-inner-box  ">
+                <div class="model-content">
+                <h3>Share Video</h3>
+                <div class="ineer-popup-content">The link to this page has now been copied to your clipboard for you to share with others.</div>
+                <div class="ineer-popup-close-btn">
+                          <button data-bs-dismiss="modal" class="btn" >Close</button>
+                          <!-- <button data-bs-dismiss="modal" class="btn btn-green" >Cancel</button> -->
+  
+                         </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="modal raund-modal copy-embed-code" id="raund-modalsss">
+        <div class="modal-dialog">
+          <div class="modal-content">
+       
+            <div class="modal-body modal-inner-box">
+                <div class="model-content">
+                <h3>Copy Embed Code</h3>
+                <div class="ineer-popup-content">
+                  <!-- <iframe width="420" height="345" src="https://www.youtube.com/embed/EngW7tLk6R8">
+                  </iframe> -->
+                  {{videoEmbed}}
+                 </div>
+                <div class="ineer-popup-close-btn">
+                         <div class="row justify-content-center">
+                            <div class="col-auto">
+                              <div class="button-tooltip-container">
+                                <button class="btn btn-blue" (click)="embedVideoCopytext(videoData.url)" >Copy</button> 
+                                <span id="custom-tooltip">Copied!</span>
+                              </div>
+                            </div>
+                            <div class="col-auto">
+                              <button data-bs-dismiss="modal" class="btn btn-yellow" >Cancel</button>
+                            </div>
+                         </div>
+                          
+  
+                         </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+
+      <div class="modal settings-modal" id="tmc">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+               
+              <h4 class="modal-title" >Share Video </h4>
+              <img data-bs-dismiss="modal"  class="btn-close popup-close" src="assets/images/close-btn.png" width="40px" alt="close">
+            </div>
+            <div class="modal-body modal-inner-box  scroller">
+              <div class="model-title">
+                <table>
+                  <tr>                 
+                    <th class="t-two"> The link to this page has now been copied to the user's clipboard for users to share this with others.</th>
+                  </tr>
+                </table>
+              </div>
+              <!-- <div class="model-content">
+                <ul>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+                </ul>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+   
+  </section>

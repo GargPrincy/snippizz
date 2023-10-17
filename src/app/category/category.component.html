@@ -1,0 +1,136 @@
+
+<section class="middle-part category-page">
+    <div class="container">
+      <div class="row">
+
+        
+          <div class="col-lg-12">
+            <div class="main-cate-head text-center">
+            <h2>Categories</h2>
+          </div>
+              <div class="min-category-page">
+                  <!-- <h2>All Categories -->
+                    <!-- {{categoriesAllData.heading }} -->
+                     <!-- <span *ngIf="totalTopic">({{totalTopic}})</span> -->
+                     <!-- <span *ngIf="categoriesAllData.totalVideos">({{categoriesAllData.totalVideos}})</span>
+                    </h2> -->
+                  <div class="row row-one">
+
+                     <div  class="col-xl-3 col-lg-4 col-6" *ngFor="let cate of categoriesAllData.categories;let i = index" >
+                        <!--<div class="col-lg-12" (click)="showTopic(i)"  [ngClass]="i %2  == 0 ? 'row_onesss s' : 'row_twoss'">
+                            <a href=""  routerLink="/category-listing/{{cate.id}}"> {{cate.name}} ({{cate.total_videos}})</a>
+                        </div> -->
+                        <div class="col-lg-12" (click)="showTopic(i)">
+                          <a href=""  routerLink="/category-listing/{{cate.id}}"> {{cate.name}} ({{cate.total_videos}})</a>
+                      </div>    <!--  -->
+                        <!-- <div  style="display: none;" id="{{i}}"> -->
+                        <div class="row row-two"   *ngFor="let catSub of cate.topics"  >
+                            <!-- <div class="col-lg-12" >
+                           <a href="" routerLink="/video-listings/{{catSub.name}}?topic" *ngIf="catSub.total_video > 0">{{catSub.name}} ({{catSub.total_video}})</a> 
+                           <a href="#" routerLink="/categories" *ngIf="catSub.total_video == 0">{{catSub.name}} ({{catSub.total_video}})</a> 
+
+                            </div> -->
+                        <!-- </div> -->
+                        <!-- <div class="col-lg-3 col-md-3">
+                                Counselling Skills (167)
+                            </div>  -->
+                            <!-- 
+                            <div class="col-lg-3 col-md-3">
+                                Influencing and Negotiating Skills (202)
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                Organisational Culture (103)
+                            </div> -->
+                        </div>
+                    </div>
+                    
+                  </div>
+                  <div class="row justify-content-center">
+                    <!-- {{categoriesAllData.categories | json}} -->
+                  <div class="col-auto">
+                      <div  class="loading position-relative" *ngIf="categoriesAllData.length == 0" >
+                        Categories Loading 
+                    </div>
+                  </div>
+                    
+                </div>
+
+<!--                
+                  <div class="row row-one">
+                      <div class="col-lg-3 col-md-3">
+                          Assertiveness (190)
+                      </div>
+                      <div class="col-lg-3 col-md-3">
+                          Customer Care (428)
+                      </div>
+                      <div class="col-lg-3 col-md-3">
+                          Facilitation Skills (171)
+                      </div>
+                      <div class="col-lg-3 col-md-3">
+                          Maximising Your Potential (185)
+                      </div>
+                  </div>
+                  <div class="row row-two">
+                      <div class="col-lg-3 col-md-3">
+                          Change Management (210)
+                      </div>
+                      <div class="col-lg-3 col-md-3">
+                          Counselling Skills (167)
+                      </div>
+                      <div class="col-lg-3 col-md-3">
+                          Influencing and Negotiating Skills (202)
+                      </div>
+                      <div class="col-lg-3 col-md-3">
+                          Organisational Culture (103)
+                      </div>
+                  </div> -->
+              </div>
+          </div>
+
+        </div>
+
+          <div class="row align-items-center">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="right-logo">
+            <img src="assets/images/logo2.png" width="100%" alt="logo 2">
+          </div>
+          <div class="right-text"> “{{categoriesAllData?.info?.subTitle }}.” </div>
+           </div>
+        <div class="col-lg-6 col-md-6">
+          <div class="right-box ">
+            <div class="top-hadding">
+              <div class="box-title" id="homePageTextBoardHeading">{{categoriesAllData?.info?.content }}…</div>
+            </div>
+            <div class="overflow categoies-scroller scroller">
+              <!-- <div id="homePageTextBoard">
+                <div  *ngFor="let topCat of categoriesAllData.top_categories;let i = index"  
+                [ngClass]="i % 2 ? 'row_two ' : 'row_one '"><span class="cate-no">{{i+1}}.</span>{{topCat.content}}</div>
+              </div> -->
+              <div id="homePageTextBoard" style="text-align: center;">
+             
+              
+                  <div class="row_one ">190+ videos on Assertiveness</div>
+                  <div class="row_two ">166+ videos on Coaching and Learning</div>
+                  <div class="row_one ">293+ videos on Communications</div>
+                  <div class="row_two ">428+ videos on Creative Thinking</div>
+                  <div class="row_one ">280+ videos on Leadership Skills</div>
+                  <div class="row_two ">247+ videos on Presentation Skills</div>
+                  <div class="row_one ">120+ videos on Project Management</div>
+                  <div class="row_two ">223+ videos on Teambuilding</div>
+                  <div class="row_one ">241+ videos on Time Management</div>
+                  <div class="row_two ">81+ videos on You and Your Career</div>
+                  <div class="row_one ">... and many more</div>
+
+           
+               
+            </div>
+            </div>
+          </div>
+        </div>
+      
+      
+      </div>
+     </div>      
+  </section>
+  <style>.s a{color:#fcc680 !important;} </style>

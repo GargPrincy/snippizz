@@ -1,0 +1,23 @@
+.btn-blue{
+    background-color: #425065;
+    border-color: #425065;
+}
+.custom-specing{
+    margin:0 -5px ;
+}
+.custom-specing .col-xl-3{
+    padding-left:5px ;
+    padding-right:5px ;
+}
+.a-select{  text-decoration: none;
+}
+.dropdown-options a{  text-decoration: none;
+}
+
+@media screen and (max-width: 575px){
+    .custom-specing .col-xl-3{
+        padding-left:0px ;
+        padding-right:0px ;
+    }
+  
+  }
