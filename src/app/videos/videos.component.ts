@@ -19,6 +19,7 @@ export class VideosComponent {
   public videoTableId:any;
   public videoClicked = 2;
   public videoEmbed:string = "";
+  public baseUrl: any;
   constructor(    
       private activatedRoute: ActivatedRoute,
       private _videoListingService: VideoListingsService,
@@ -26,6 +27,7 @@ export class VideosComponent {
       
     ) {
       this.imageObject = [];
+      this.baseUrl = window.location.href;
     }
 
     ngOnInit() {

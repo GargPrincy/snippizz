@@ -61,7 +61,7 @@
                          <youtube-player    videoId="{{videoId}}"></youtube-player>
                   </div>
                   <div style="display: none">
-                    <input type="text" id="ytbUrl" value="{{videoData.url}}"/>
+                    <input type="text" id="ytbUrl" value="{{this.baseUrl}}"/>
                     <input type="text" id="embedUrl" value="{{videoEmbed}}"/>
 
                   </div>
@@ -118,7 +118,7 @@
 
             <div class="cat-box-right"  >
               <a href="" 
-               (click)="shareVideoCopytext(videoData.url)"   data-bs-toggle="modal" data-bs-target="#raund-modalss"> 
+               (click)="shareVideoCopytext(this.baseUrl)"   data-bs-toggle="modal" data-bs-target="#raund-modalss"> 
               <img src="assets/images/share-btn.png" alt=""  />
               <div class="right-btnn">
                 Share Video
